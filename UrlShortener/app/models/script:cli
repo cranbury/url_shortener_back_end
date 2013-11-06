@@ -1,0 +1,47 @@
+require "user"
+require "shortened_url"
+require "visit"
+
+
+
+class UserInterface
+  def initialize
+
+  end
+
+  def interact
+    while #still using
+      create_url
+      display_urls
+    end
+  end
+
+  def main_menu
+  end
+
+  def create_url
+    print "Please enter your email: "
+    email = gets.chomp
+    puts
+    print "Please enter the URL you wish to shorten: "
+    long_url = gets.chomp
+    puts
+    ShortenedUrl.create_for_user_and_long_url!(email, long_url)
+  end
+
+  def display_urls
+    print "\tDestination"
+    print "ShortURL".rjust(50)
+    puts
+    ShortenedUrl.all.each do |url|
+      print "\t#{url.long_url}"
+      print "#{url.short_url}".rjust(50)
+      puts
+    end
+  end
+
+  def follow_urls
+  end
+
+
+end
